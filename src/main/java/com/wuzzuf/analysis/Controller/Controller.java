@@ -16,5 +16,5 @@ public class Controller
     public String getHead() { return dao.getHead(); }
 
     @GetMapping("/show_companies_pie_chart")
-    public  String  show_pie_chart() throws IOException { return dao.getCompanyPieChart(); }
+    public  String  show_companies_pie_chart() throws IOException { return dao.getCompanyPieChart(); }
 }
