@@ -1,14 +1,20 @@
-package com.wuzzuf.analysis.controller;
+package com.wuzzuf.analysis.Controller;
 
+import com.wuzzuf.analysis.Business.DAO;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.io.IOException;
 
 @RestController
 public class Controller
 {
-    @RequestMapping("/greeting")
-    public String getGreetings()
-    {
-        return "Hello World!";
-    }
+    private final DAO dao = new DAO();
+
+    @RequestMapping("/show_head_data")
+    public String getHead() { return dao.getHead(); }
+
+    @GetMapping("/show_companies_pie_chart")
+    public  String  show_pie_chart() throws IOException { return dao.getCompanyPieChart(); }
 }
