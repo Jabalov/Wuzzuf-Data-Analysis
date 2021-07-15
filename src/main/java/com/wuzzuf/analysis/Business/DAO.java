@@ -6,13 +6,14 @@ import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Encoders;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
-import org.knowm.xchart.BitmapEncoder;
-import org.knowm.xchart.PieChart;
-import org.knowm.xchart.PieChartBuilder;
+import org.knowm.xchart.*;
+import org.knowm.xchart.style.AxesChartStyler;
 import org.knowm.xchart.style.Styler;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.apache.spark.sql.functions.col;
 
@@ -56,6 +57,34 @@ public class DAO
 
         BitmapEncoder.saveBitmap(chart, "src\\main\\resources\\company_pie_chart.png", BitmapEncoder.BitmapFormat.PNG);
         return displayer.displayImage("src\\main\\resources\\company_pie_chart.png");
+    }
+
+    public String getLocationBarChart() throws IOException
+    {
+        Dataset<Row> groupedByLocation = dataset.groupBy("Location")
+                .count()
+                .orderBy(col("count").desc());
+
+        List<String> Locations = groupedByLocation.select("Location").as(Encoders.STRING()).collectAsList();
+        List<String> counted = groupedByLocation.select("count").as(Encoders.STRING()).collectAsList();
+        List<Float> counting = new ArrayList();
+
+        for(String s : counted) counting.add(Float.valueOf(s));
+        System.out.println();
+        CategoryChart charts = new CategoryChartBuilder().width (14366).height (700).title ("Locations Bar_chart").xAxisTitle("Locations").yAxisTitle("frequency").build();
+        charts.getStyler().setLegendPosition(Styler.LegendPosition.OutsideS);
+        charts.getStyler().setLegendLayout(Styler.LegendLayout.Horizontal);
+        charts.getStyler().setHasAnnotations(true);
+        charts.getStyler().setStacked(true);
+        charts.addSeries("Locations", Locations, counting);
+
+        //new SwingWrapper(charts).displayChart();
+
+
+
+
+        BitmapEncoder.saveBitmap(charts, "src\\main\\resources\\Locations Bar_chart.png", BitmapEncoder.BitmapFormat.PNG);
+        return displayer.displayImage("src\\main\\resources\\Locations Bar_chart.png");
     }
 
 }
