@@ -24,7 +24,7 @@ public class DAO
                                                     .master("local[*]")
                                                     .getOrCreate();
 
-    private Dataset<Row> dataset = sparkSession.read()
+    private final Dataset<Row> dataset = sparkSession.read()
                                             .option("header", true)
                                             .csv("src\\main\\resources\\wuzzufjobs.csv")
                                             .dropDuplicates()
@@ -35,6 +35,17 @@ public class DAO
     {
         List<Row> head = dataset.limit(5).collectAsList();
         return displayer.displayData(head, dataset.columns());
+    }
+
+    public String getMostDemandingCompanies()
+    {
+        Dataset<Row> groupedByCompany = dataset.groupBy("Company")
+                .count()
+                .orderBy(col("count").desc())
+                .limit(10);
+        List<Row> groupedByCompanyList = groupedByCompany.collectAsList();
+
+        return displayer.displayData(groupedByCompanyList, groupedByCompany.columns());
     }
 
     public String getCompanyPieChart() throws IOException

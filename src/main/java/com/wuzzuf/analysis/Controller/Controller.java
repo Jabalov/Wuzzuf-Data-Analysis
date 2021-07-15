@@ -15,6 +15,9 @@ public class Controller
     @RequestMapping("/show_head_data")
     public String getHead() { return dao.getHead(); }
 
+    @RequestMapping("/show_most_demanding_companies")
+    public String showMostDamndingCompanies() { return dao.getMostDemandingCompanies(); }
+
     @GetMapping("/show_companies_pie_chart")
-    public  String  show_companies_pie_chart() throws IOException { return dao.getCompanyPieChart(); }
+    public  String  showCompaniesPieChart() throws IOException { return dao.getCompanyPieChart(); }
 }
