@@ -20,4 +20,10 @@ public class Controller
 
     @GetMapping("/show_companies_pie_chart")
     public  String  showCompaniesPieChart() throws IOException { return dao.getCompanyPieChart(); }
+
+    @GetMapping("/show_years_factoreized")
+    public String showYearsFactorized() { return dao.getFactorizedYearsOfExp(); }
+
+    @GetMapping("/apply_kmeans")
+    public String applyKMeans() { return dao.kMeansAlgorithm(); }
 }

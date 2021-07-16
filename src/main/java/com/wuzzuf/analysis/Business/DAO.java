@@ -2,6 +2,11 @@ package com.wuzzuf.analysis.Business;
 
 import com.wuzzuf.analysis.Utilities.Displayer;
 import org.apache.spark.api.java.function.FilterFunction;
+import org.apache.spark.ml.clustering.KMeans;
+import org.apache.spark.ml.clustering.KMeansModel;
+import org.apache.spark.ml.clustering.KMeansSummary;
+import org.apache.spark.ml.feature.StringIndexer;
+import org.apache.spark.ml.feature.VectorAssembler;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Encoders;
 import org.apache.spark.sql.Row;
@@ -10,8 +15,10 @@ import org.knowm.xchart.BitmapEncoder;
 import org.knowm.xchart.PieChart;
 import org.knowm.xchart.PieChartBuilder;
 import org.knowm.xchart.style.Styler;
+import scala.Option;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.apache.spark.sql.functions.col;
@@ -69,4 +76,50 @@ public class DAO
         return displayer.displayImage("src\\main\\resources\\company_pie_chart.png");
     }
 
+    public String getFactorizedYearsOfExp()
+    {
+        Dataset<Row> datasetWithFactorizedYears = new StringIndexer()
+                .setInputCol("YearsExp")
+                .setOutputCol("FactorizedYears")
+                .fit(dataset)
+                .transform(dataset);
+
+        String[] cols = {"YearsExp", "FactorizedYears"};
+        List<Row> years = datasetWithFactorizedYears.select("YearsExp", "FactorizedYears")
+                .limit(20)
+                .collectAsList();
+
+        return displayer.displayData(years, cols);
+    }
+
+    public String kMeansAlgorithm()
+    {
+        Dataset<Row> data = dataset.as("data");
+        String[] cols = {"Title", "Company", "Location", "Type", "Level", "YearsExp", "Country"};
+        String[] factorizedCols = {"TitleFactorized", "CompanyFactorized",
+                "LocationFactorized", "TypeFactorized",
+                "LevelFactorized", "YearsExpFactorized", "CountryFactorized"};
+
+        for(int i = 0; i < cols.length; i++)
+        {
+            StringIndexer indexer = new StringIndexer();
+            indexer.setInputCol(cols[i]).setOutputCol(factorizedCols[i]);
+            data = indexer.fit(data).transform(data);
+        }
+
+        for(int i = 0; i < cols.length; i++)
+            data = data.withColumn(factorizedCols[i], data.col(factorizedCols[i]).cast("double"));
+
+
+        VectorAssembler vectorAssembler = new VectorAssembler();
+        vectorAssembler.setInputCols(factorizedCols).setOutputCol("features");
+        Dataset<Row> trainData = vectorAssembler.transform(data);
+
+        KMeans kmeans = new KMeans().setK(5).setSeed(1L);
+        kmeans.setFeaturesCol("features");
+        KMeansModel model = kmeans.fit(trainData);
+
+        KMeansSummary summary = model.summary();
+        return "Summary : " + Arrays.toString(summary.clusterSizes());
+    }
 }
