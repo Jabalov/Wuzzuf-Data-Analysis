@@ -1,19 +1,25 @@
 package com.wuzzuf.analysis.Business;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.wuzzuf.analysis.Utilities.Displayer;
 import org.apache.spark.api.java.function.FilterFunction;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Encoders;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
+import org.apache.spark.sql.types.StructType;
 import org.knowm.xchart.*;
-import org.knowm.xchart.style.AxesChartStyler;
 import org.knowm.xchart.style.Styler;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.apache.spark.sql.functions.col;
 
@@ -85,6 +91,21 @@ public class DAO
 
         BitmapEncoder.saveBitmap(charts, "src\\main\\resources\\Locations Bar_chart.png", BitmapEncoder.BitmapFormat.PNG);
         return displayer.displayImage("src\\main\\resources\\Locations Bar_chart.png");
+    }
+
+    public String structure() throws JsonProcessingException {
+        StructType st = dataset.schema();
+        dataset.printSchema();
+
+        ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+        String json = mapper.writeValueAsString(st.json());
+        return json;
+
+    }
+    public  String getsummary(){
+        Dataset<Row> str = dataset.summary();
+        List<Row> str1 = str.limit(10).collectAsList();
+        return displayer.displayData(str1, str.columns());
     }
 
 }
