@@ -7,6 +7,7 @@ import org.apache.spark.ml.clustering.KMeansModel;
 import org.apache.spark.ml.clustering.KMeansSummary;
 import org.apache.spark.ml.feature.StringIndexer;
 import org.apache.spark.ml.feature.VectorAssembler;
+import org.apache.spark.ml.param.Param;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Encoders;
 import org.apache.spark.sql.Row;
@@ -95,10 +96,8 @@ public class DAO
     public String kMeansAlgorithm()
     {
         Dataset<Row> data = dataset.as("data");
-        String[] cols = {"Title", "Company", "Location", "Type", "Level", "YearsExp", "Country"};
-        String[] factorizedCols = {"TitleFactorized", "CompanyFactorized",
-                "LocationFactorized", "TypeFactorized",
-                "LevelFactorized", "YearsExpFactorized", "CountryFactorized"};
+        String[] cols = {"Title", "Company"};
+        String[] factorizedCols = {"TitleFactorized", "CompanyFactorized"};
 
         for(int i = 0; i < cols.length; i++)
         {
@@ -115,11 +114,18 @@ public class DAO
         vectorAssembler.setInputCols(factorizedCols).setOutputCol("features");
         Dataset<Row> trainData = vectorAssembler.transform(data);
 
-        KMeans kmeans = new KMeans().setK(5).setSeed(1L);
+        KMeans kmeans = new KMeans().setK(3).setSeed(1L);
         kmeans.setFeaturesCol("features");
         KMeansModel model = kmeans.fit(trainData);
-
-        KMeansSummary summary = model.summary();
-        return "Summary : " + Arrays.toString(summary.clusterSizes());
+        
+        return "<center>" +
+                    "Model Distance Measure: " + model.getDistanceMeasure()
+                    + "<br>" +
+                    "Number of Features: " + model.numFeatures()
+                    + "<br>" +
+                    "Number of iterations: " + model.getMaxIter()
+                    + "<br>" +
+                    "Model Centers:" + Arrays.toString(model.clusterCenters())
+                + "</center>";
     }
 }
