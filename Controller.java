@@ -27,7 +27,7 @@ public class Controller
     public  String  show_companies_pie_chart() throws IOException { return dao.getCompanyPieChart(); }
     
 
-    @GetMapping("/show_popular_data")
+    @GetMapping("/show_popular_title")
     public  String PopularTile() throws IOException {  return dao.PopularTile();}
                 
     
