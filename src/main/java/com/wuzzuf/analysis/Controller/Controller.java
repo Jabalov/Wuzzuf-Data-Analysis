@@ -5,6 +5,8 @@ import com.wuzzuf.analysis.Business.DAO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 public class Controller
@@ -40,4 +42,13 @@ public class Controller
 
     @GetMapping("/apply_kmeans")
     public String applyKMeans() { return dao.kMeansAlgorithm(); }
+
+    @GetMapping("/show_popular_areas")
+    public  String  show_popular_areas() throws IOException { return dao.getPopularArea(); }
+
+    @GetMapping("/show_skills")
+    public List<Map.Entry> getskills2()throws IOException {
+        return dao.getskills2();
+    }
 }
+

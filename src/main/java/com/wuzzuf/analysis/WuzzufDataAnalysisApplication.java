@@ -12,6 +12,7 @@ public class WuzzufDataAnalysisApplication
 		SpringApplication.run(WuzzufDataAnalysisApplication.class, args);
 
 		DAO dao = new DAO();
+                System.out.println(dao);
 
 	}
 }

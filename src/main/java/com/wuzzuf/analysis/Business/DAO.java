@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.wuzzuf.analysis.Utilities.Displayer;
+import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.function.FilterFunction;
 import org.apache.spark.ml.clustering.KMeans;
 import org.apache.spark.ml.clustering.KMeansModel;
@@ -16,11 +17,14 @@ import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.types.StructType;
 import org.knowm.xchart.*;
 import org.knowm.xchart.style.Styler;
+
+import java.util.*;
+import java.io.IOException;
+
+import static org.apache.spark.sql.functions.col;
 import java.util.Arrays;
 import java.util.List;
-import java.io.IOException;
-import java.util.ArrayList;
-import static org.apache.spark.sql.functions.col;
+import java.util.stream.Collectors;
 
 public class DAO
 {
@@ -197,4 +201,30 @@ public class DAO
                     "Model Centers:" + Arrays.toString(model.clusterCenters())
                 + "</center>";
     }
+    public String getPopularArea() throws IOException {
+        Dataset<Row> groupedByLocation = dataset.groupBy("Location")
+                .count()
+                .orderBy(col("count").desc());
+        List<Row> locations = groupedByLocation.collectAsList();
+        return displayer.displayData(locations, groupedByLocation.columns());
+    }
+
+
+
+    public  List<Map.Entry> getskills2() throws IOException{
+
+        JavaRDD<String> data=dataset.select("Skills").drop().as(Encoders.STRING()).javaRDD();
+        JavaRDD<String> words = data.flatMap (skill -> Arrays.asList (skill
+                .toLowerCase ()
+                .trim ()
+                .split (",")).iterator ());
+        Map<String, Long> wordCounts = words.countByValue ();
+        List<Map.Entry> sorted = wordCounts.entrySet ().stream ()
+                .sorted (Map.Entry.comparingByValue ()).collect (Collectors.toList ());
+        Collections.reverse(sorted);
+
+
+        return  sorted;
+    }
+
 }
