@@ -1,38 +1,21 @@
 package com.wuzzuf.analysis.Controller;
 
 import com.wuzzuf.analysis.Business.DAO;
-import org.apache.spark.sql.Dataset;
-import org.apache.spark.sql.Row;
-import org.apache.spark.sql.types.StructField;
-import org.apache.spark.sql.types.StructType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.apache.spark.sql.SparkSession;
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-import org.apache.spark.api.java.JavaRDD;
-import org.apache.spark.api.java.function.FilterFunction;
-import org.apache.spark.sql.Dataset;
-import org.apache.spark.sql.Row;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
-import java.util.List;
 
 @RestController
 public class Controller
 {
-   
-   
     private final DAO dao = new DAO();
 
-   
-    @GetMapping("/show_popular_data")
-    public  String PopularTile() throws IOException {  return dao.PopularTile();}
+    @GetMapping("/show_popular_titles")
+    public  String PopularTile() throws IOException {  return dao.getPopularTitles();}
                 
     @GetMapping("/show_titles_pie_chart")
-    public  String  getTitleChart() throws IOException { return dao.getTitleChart();}
+    public  String  getTitleChart() throws IOException { return dao.getTitlesChart();}
 
     @GetMapping("/show_head_data")
     public String getHead() { return dao.getHead(); }
@@ -43,16 +26,14 @@ public class Controller
     @GetMapping("/show_companies_pie_chart")
     public  String  show_companies_pie_chart() throws IOException { return dao.getCompanyPieChart(); }
 
-    @GetMapping("/show_Locations_bar_chart")
-    public  String  show_Locations_Bar_chart() throws IOException { return dao.getLocationBarChart(); }
+    @GetMapping("/show_locations_bar_chart")
+    public  String  show_locations_Bar_chart() throws IOException { return dao.getLocationBarChart(); }
 
-    @GetMapping("/show_Structure")
-    public String showstructure() throws IOException { return  dao.structure(); }
+    @GetMapping("/show_structure")
+    public String showStructure() throws IOException { return  dao.structure(); }
   
-    @GetMapping("/show_Summary")
-    public String showummary() throws IOException { return dao.getsummary(); }
-
-    public  String  showCompaniesPieChart() throws IOException { return dao.getCompanyPieChart(); }
+    @GetMapping("/show_summary")
+    public String showSummary() throws IOException { return dao.getSummary(); }
 
     @GetMapping("/show_years_factoreized")
     public String showYearsFactorized() { return dao.getFactorizedYearsOfExp(); }
