@@ -8,11 +8,14 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-public class Displayer {
-    public String displayData(List<Row> data, String[] header) {
+public class Displayer
+{
+    public String displayData(List<Row> data, String[] header)
+    {
         HTMLTableBuilder htmlTableBuilder = new HTMLTableBuilder(null, false, 10, header.length);
         htmlTableBuilder.addTableHeader(header);
-        for (Row row : data) {
+        for (Row row : data)
+        {
             String[] splittedRow = row.toString()
                     .replace("]", "").replace("[", "")
                     .split(",", header.length);
