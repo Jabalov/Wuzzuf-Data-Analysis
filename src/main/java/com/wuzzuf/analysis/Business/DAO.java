@@ -1,5 +1,12 @@
 package com.wuzzuf.analysis.Business;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.wuzzuf.analysis.Utilities.Displayer;
 import org.apache.spark.api.java.function.FilterFunction;
 import org.apache.spark.ml.clustering.KMeans;
@@ -12,9 +19,8 @@ import org.apache.spark.ml.param.Param;
 import org.apache.spark.sql.Encoders;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
-import org.knowm.xchart.BitmapEncoder;
-import org.knowm.xchart.PieChart;
-import org.knowm.xchart.PieChartBuilder;
+import org.apache.spark.sql.types.StructType;
+import org.knowm.xchart.*;
 import org.knowm.xchart.style.Styler;
 import java.util.Arrays;
 import java.util.List;
@@ -37,6 +43,7 @@ import smile.data.DataFrame;
 import scala.Option;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -112,6 +119,52 @@ public class DAO
 
         BitmapEncoder.saveBitmap(chart, "src\\main\\resources\\company_pie_chart.png", BitmapEncoder.BitmapFormat.PNG);
         return displayer.displayImage("src\\main\\resources\\company_pie_chart.png");
+    }
+
+    public String getLocationBarChart() throws IOException
+    {
+        Dataset<Row> groupedByLocation = dataset.groupBy("Location")
+                .count()
+                .orderBy(col("count").desc());
+
+        List<String> Locations = groupedByLocation.select("Location").as(Encoders.STRING()).collectAsList();
+        List<String> counted = groupedByLocation.select("count").as(Encoders.STRING()).collectAsList();
+        List<Float> counting = new ArrayList();
+
+        for(String s : counted) counting.add(Float.valueOf(s));
+        System.out.println();
+        CategoryChart charts = new CategoryChartBuilder().width (14366).height (700).title ("Locations Bar_chart").xAxisTitle("Locations").yAxisTitle("frequency").build();
+        charts.getStyler().setLegendPosition(Styler.LegendPosition.OutsideS);
+        charts.getStyler().setLegendLayout(Styler.LegendLayout.Horizontal);
+        charts.getStyler().setHasAnnotations(true);
+        charts.getStyler().setStacked(true);
+        charts.addSeries("Locations", Locations, counting);
+
+        //new SwingWrapper(charts).displayChart();
+
+
+
+
+        BitmapEncoder.saveBitmap(charts, "src\\main\\resources\\Locations Bar_chart.png", BitmapEncoder.BitmapFormat.PNG);
+        return displayer.displayImage("src\\main\\resources\\Locations Bar_chart.png");
+    }
+
+    public String structure() throws JsonProcessingException
+    {
+        StructType st = dataset.schema();
+        dataset.printSchema();
+
+        ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+        String json = mapper.writeValueAsString(st.json());
+        return json;
+
+    }
+  
+    public  String getsummary()
+    {
+        Dataset<Row> str = dataset.summary();
+        List<Row> str1 = str.limit(10).collectAsList();
+        return displayer.displayData(str1, str.columns());
     }
 
     public String getTitleChart() throws IOException
