@@ -1,0 +1,6 @@
+com\wuzzuf\analysis\WuzzufDataAnalysisApplication.class
+com\wuzzuf\analysis\Utilities\Displayer.class
+com\wuzzuf\analysis\Utilities\HTMLTableBuilder.class
+com\wuzzuf\analysis\Business\DAO.class
+com\wuzzuf\analysis\PojoClass.class
+com\wuzzuf\analysis\Controller\Controller.class
