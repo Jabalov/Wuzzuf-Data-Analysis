@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.wuzzuf.analysis.WuzzufDataAnalysisApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 47.605 s - in com.wuzzuf.analysis.WuzzufDataAnalysisApplicationTests
