@@ -17,7 +17,7 @@ public class Controller
     @GetMapping("/show_popular_titles")
     public  String PopularTile() throws IOException {  return dao.getPopularTitles();}
                 
-    @GetMapping("/show_titles_pie_chart")
+    @GetMapping("/show_titles_bar_chart")
     public  String  getTitleChart() throws IOException { return dao.getTitlesChart();}
 
     @GetMapping("/show_head_data")

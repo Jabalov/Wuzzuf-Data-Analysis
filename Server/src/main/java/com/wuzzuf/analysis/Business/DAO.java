@@ -128,19 +128,27 @@ public class DAO
         Dataset<Row> groupedByCompany = dataset.groupBy("Title")
                 .count()
                 .orderBy(col("count").desc())
-                 .limit(10);
+                .limit(10);
+
         List<String> titles = groupedByCompany.select("Title").as(Encoders.STRING()).collectAsList();
         List<String> counts = groupedByCompany.select("count").as(Encoders.STRING()).collectAsList();
 
-        PieChart chart = new PieChartBuilder().width(1400).height(700).title("Titles Pie-Chart").build();
-        chart.getStyler().setLegendPosition(Styler.LegendPosition.OutsideE);
+        List<Float> counting = new ArrayList<>();
+
+        for(String count : counts)
+            counting.add(Float.valueOf(count));
+        CategoryChart chart =new CategoryChartBuilder ().width (1400).height (700).title ("titles bar-Chart").xAxisTitle ("Title").yAxisTitle("count").build ();
+        chart.getStyler().setLegendPosition(Styler.LegendPosition.InsideNW);
         chart.getStyler().setLegendLayout(Styler.LegendLayout.Vertical);
 
-        for (int i = 0; i < titles.size() ; i++)
-            chart.addSeries(titles.get(i), Integer.parseInt(counts.get(i)));
+        chart.getStyler ().setLegendPosition (Styler.LegendPosition.InsideNW);
+        chart.getStyler ().setHasAnnotations (true);
+        chart.getStyler ().setStacked (true);
+        chart.addSeries("titles", titles, counting);
 
-        BitmapEncoder.saveBitmap(chart, "src\\main\\resources\\title_pie_chart.png", BitmapEncoder.BitmapFormat.PNG);
-        return displayer.displayImage("src\\main\\resources\\title_pie_chart.png");
+
+        BitmapEncoder.saveBitmap(chart, "src\\main\\resources\\title_bar_chart.png", BitmapEncoder.BitmapFormat.PNG);
+        return displayer.displayImage("src\\main\\resources\\title_bar_chart.png");
     }
 
 
