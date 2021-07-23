@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85b20851-3335-4f83-b7ef-9d51b6096ea7" name="Default Changelist" comment="Last Update">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/wuzzuf/analysis/Business/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/wuzzuf/analysis/Business/DAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/wuzzuf/analysis/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/wuzzuf/analysis/Controller/Controller.java" afterDir="false" />
+    <list default="true" id="85b20851-3335-4f83-b7ef-9d51b6096ea7" name="Default Changelist" comment="Last Commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +21,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectId" id="1vBJbZqDHkm25BUF7xcVvJ9sHYq" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -117,6 +114,8 @@
       <workItem from="1626882277925" duration="3326000" />
       <workItem from="1626886185210" duration="279000" />
       <workItem from="1626945989789" duration="326000" />
+      <workItem from="1626946583188" duration="360000" />
+      <workItem from="1627077992632" duration="122000" />
     </task>
     <task id="LOCAL-00001" summary="Adding Most Demanding Companies">
       <created>1626341623654</created>
@@ -153,7 +152,21 @@
       <option name="project" value="LOCAL" />
       <updated>1626886325157</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Last Commit">
+      <created>1626946597834</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1626946597834</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Last Commit">
+      <created>1626946629799</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1626946629799</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,6 +190,7 @@
     <MESSAGE value="Adding KMeans &amp; Factorized Years" />
     <MESSAGE value="Refactor after merging" />
     <MESSAGE value="Last Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Last Update" />
+    <MESSAGE value="Last Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Last Commit" />
   </component>
 </project>
