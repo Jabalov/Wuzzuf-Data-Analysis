@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="85b20851-3335-4f83-b7ef-9d51b6096ea7" name="Default Changelist" comment="Last Update">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/wuzzuf/analysis/Business/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/wuzzuf/analysis/Business/DAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/wuzzuf/analysis/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/wuzzuf/analysis/Controller/Controller.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="ProjectId" id="1vBJbZqDHkm25BUF7xcVvJ9sHYq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Server" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Jabal\Downloads\analysis\src\main\resources" />
+      <recent name="C:\Users\Jabal\Downloads\analysis\src\main\java\com\wuzzuf\analysis" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.wuzzuf.analysis" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.WuzzufDataAnalysisApplication">
+    <configuration name="All in generated-requests" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests#2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="2" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="WuzzufDataAnalysisApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Analysis" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.wuzzuf.analysis.WuzzufDataAnalysisApplication" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="HTTP Request.All in generated-requests" />
+      <item itemvalue="HTTP Request.generated-requests#2" />
+      <item itemvalue="Spring Boot.WuzzufDataAnalysisApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.generated-requests#2" />
+        <item itemvalue="HTTP Request.All in generated-requests" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="85b20851-3335-4f83-b7ef-9d51b6096ea7" name="Default Changelist" comment="" />
+      <created>1626029626076</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1626029626076</updated>
+      <workItem from="1626029629199" duration="4305000" />
+      <workItem from="1626034055750" duration="1224000" />
+      <workItem from="1626097087069" duration="2075000" />
+      <workItem from="1626100398274" duration="6638000" />
+      <workItem from="1626339657644" duration="29000" />
+      <workItem from="1626340255233" duration="296000" />
+      <workItem from="1626340636829" duration="1009000" />
+      <workItem from="1626371583771" duration="2949000" />
+      <workItem from="1626419227028" duration="3781000" />
+      <workItem from="1626534086931" duration="2911000" />
+      <workItem from="1626601441787" duration="2456000" />
+      <workItem from="1626881362343" duration="796000" />
+      <workItem from="1626882277925" duration="3326000" />
+      <workItem from="1626886185210" duration="279000" />
+      <workItem from="1626945989789" duration="326000" />
+    </task>
+    <task id="LOCAL-00001" summary="Adding Most Demanding Companies">
+      <created>1626341623654</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1626341623654</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Adding KMeans &amp; Factorized Years">
+      <created>1626423286583</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1626423286583</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Adding KMeans &amp; Factorized Years">
+      <created>1626538249854</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1626538249854</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Refactor after merging">
+      <created>1626603358873</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1626603358873</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Last Update">
+      <created>1626886325157</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1626886325157</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Adding Most Demanding Companies" />
+    <MESSAGE value="Adding KMeans &amp; Factorized Years" />
+    <MESSAGE value="Refactor after merging" />
+    <MESSAGE value="Last Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Last Update" />
+  </component>
+</project>
