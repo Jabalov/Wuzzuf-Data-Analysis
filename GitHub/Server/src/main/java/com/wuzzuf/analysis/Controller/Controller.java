@@ -3,6 +3,7 @@ package com.wuzzuf.analysis.Controller;
 import com.wuzzuf.analysis.Business.DAO;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.util.List;
@@ -16,7 +17,7 @@ public class Controller
     @GetMapping("/show_popular_titles")
     public  String PopularTile() throws IOException {  return dao.getPopularTitles();}
                 
-    @GetMapping("/show_titles_pie_chart")
+    @GetMapping("/show_titles_bar_chart")
     public  String  getTitleChart() throws IOException { return dao.getTitlesChart();}
 
     @GetMapping("/show_head_data")
@@ -32,7 +33,7 @@ public class Controller
     public  String  show_locations_Bar_chart() throws IOException { return dao.getLocationBarChart(); }
 
     @GetMapping("/show_structure")
-    public String showStructure() throws IOException { return  dao.structure(); }
+    public @ResponseBody String showStructure() throws IOException { return dao.structure(); }
   
     @GetMapping("/show_summary")
     public String showSummary() throws IOException { return dao.getSummary(); }
@@ -43,12 +44,6 @@ public class Controller
     @GetMapping("/apply_kmeans")
     public String applyKMeans() { return dao.kMeansAlgorithm(); }
 
-    @GetMapping("/show_popular_areas")
-    public  String  show_popular_areas() throws IOException { return dao.getPopularArea(); }
-
-    @GetMapping("/show_skills")
-    public List<Map.Entry> getskills2()throws IOException {
-        return dao.getskills2();
-    }
+    @GetMapping("/get_most_demanded_skills")
+    public @ResponseBody List<Map.Entry> getMostDemandedSkills() { return dao.getMostDemandedSkills(); }
 }
-
