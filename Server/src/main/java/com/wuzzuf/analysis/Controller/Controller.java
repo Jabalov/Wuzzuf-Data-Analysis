@@ -3,6 +3,7 @@ package com.wuzzuf.analysis.Controller;
 import com.wuzzuf.analysis.Business.DAO;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.util.List;
@@ -44,11 +45,9 @@ public class Controller
     public String applyKMeans() { return dao.kMeansAlgorithm(); }
 
     @GetMapping("/show_popular_areas")
-    public  String  show_popular_areas() throws IOException { return dao.getPopularArea(); }
+    public  String  show_popular_areas() { return dao.getPopularArea(); }
 
     @GetMapping("/show_skills")
-    public List<Map.Entry> getskills2()throws IOException {
-        return dao.getskills2();
-    }
+    public @ResponseBody List<Map.Entry> getSkills()  { return dao.getMostDemandedSkills(); }
 }
 

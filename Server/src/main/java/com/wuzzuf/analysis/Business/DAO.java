@@ -1,8 +1,6 @@
 package com.wuzzuf.analysis.Business;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.wuzzuf.analysis.Utilities.Displayer;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.function.FilterFunction;
@@ -17,6 +15,7 @@ import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.types.StructType;
 import org.knowm.xchart.*;
 import org.knowm.xchart.style.Styler;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.*;
 import java.io.IOException;
@@ -201,7 +200,9 @@ public class DAO
                     "Model Centers:" + Arrays.toString(model.clusterCenters())
                 + "</center>";
     }
-    public String getPopularArea() throws IOException {
+
+    public String getPopularArea()
+    {
         Dataset<Row> groupedByLocation = dataset.groupBy("Location")
                 .count()
                 .orderBy(col("count").desc());
@@ -211,18 +212,19 @@ public class DAO
 
 
 
-    public  List<Map.Entry> getskills2() throws IOException{
+    public @ResponseBody List<Map.Entry> getMostDemandedSkills()
+    {
 
         JavaRDD<String> data=dataset.select("Skills").drop().as(Encoders.STRING()).javaRDD();
         JavaRDD<String> words = data.flatMap (skill -> Arrays.asList (skill
                 .toLowerCase ()
                 .trim ()
                 .split (",")).iterator ());
+
         Map<String, Long> wordCounts = words.countByValue ();
         List<Map.Entry> sorted = wordCounts.entrySet ().stream ()
                 .sorted (Map.Entry.comparingByValue ()).collect (Collectors.toList ());
         Collections.reverse(sorted);
-
 
         return  sorted;
     }
